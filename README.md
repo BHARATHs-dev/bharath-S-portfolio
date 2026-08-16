@@ -243,3 +243,6 @@ The footer features a premium animated neon border:
 - **Email**: [bharaths2202@gmail.com](mailto:bharaths2202@gmail.com)
 - **GitHub**: [@BHARATHs-dev](https://github.com/BHARATHs-dev)
 - **LinkedIn**: [Bharath S](https://www.linkedin.com/in/bharath-s-270782344)
+
+# Private certificates and resume copies
+src/assets/images/*.pdf
