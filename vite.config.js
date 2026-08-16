@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/bharath-dev-portfolio/',
+  base: '/bharath-S-portfolio/',
   plugins: [react()],
   server: {
     proxy: {
