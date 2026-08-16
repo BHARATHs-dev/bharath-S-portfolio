@@ -1,0 +1,126 @@
+/* ===== Outer container ===== */
+.footer-outer {
+  position: relative;
+  max-width: 1400px;
+  width: calc(100% - 48px);
+  margin: 60px auto 40px;
+  border-radius: 24px;
+  background-color: #0a0a0a;
+  border: 2px solid rgba(255, 106, 0, 0.12);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* ===== Neon glow layer (behind border) ===== */
+.footer-neon-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 0;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 285deg,
+    rgba(255, 106, 0, 0.4) 305deg,
+    rgba(255, 176, 0, 0.5) 320deg,
+    rgba(255, 176, 0, 0.5) 336deg,
+    rgba(255, 106, 0, 0.4) 350deg,
+    transparent 360deg
+  );
+
+  filter: blur(10px);
+  opacity: 0.8;
+
+  mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  mask-origin: content-box, border-box;
+  mask-composite: exclude;
+  -webkit-mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  -webkit-mask-origin: content-box, border-box;
+  -webkit-mask-composite: xor;
+
+  animation: neonBorderSpin 9s linear infinite;
+}
+
+/* ===== Neon gradient border layer ===== */
+.footer-neon-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 285deg,
+    #FF6A00 305deg,
+    #FFB000 320deg,
+    #FFFFFF 328deg,
+    #FFB000 336deg,
+    #FF6A00 350deg,
+    transparent 360deg
+  );
+
+  filter: drop-shadow(0 0 3px rgba(255, 106, 0, 0.5));
+
+  mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  mask-origin: content-box, border-box;
+  mask-composite: exclude;
+  -webkit-mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  -webkit-mask-origin: content-box, border-box;
+  -webkit-mask-composite: xor;
+
+  animation: neonBorderSpin 9s linear infinite;
+}
+
+@keyframes neonBorderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Inner footer ===== */
+.footer-inner {
+  position: relative;
+  z-index: 2;
+  background-color: #0a0a0a;
+  border-radius: 23px;
+  padding: 56px 64px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .footer-outer {
+    width: calc(100% - 48px);
+    margin: 40px auto 24px;
+  }
+
+  .footer-inner {
+    padding: 28px 22px;
+  }
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .footer-neon-border,
+  .footer-neon-glow {
+    animation: none;
+  }
+}

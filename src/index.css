@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 5 5 5;
+    --foreground: 245 245 245;
+    --primary: 255 106 0;
+    --primary-foreground: 245 245 245;
+    --accent: 255 106 0;
+    --accent-foreground: 245 245 245;
+    --muted: 161 161 161;
+    --muted-foreground: 102 102 102;
+    --border: 36 36 36;
+    --ring: 255 106 0;
+  }
+
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-brand-orange mb-4;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-4 text-brand-text;
+    background: linear-gradient(135deg, #FF6A00 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-brand-secondary-text max-w-2xl mx-auto;
+    opacity: 0.75;
+  }
+
+  .card {
+    @apply rounded-2xl p-6 shadow-sm border;
+    background-color: #111111;
+    border-color: #242424;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: #FF6A00;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 106, 0, 0.08);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-brand-bg;
+    background-color: #FF6A00;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #FF7A00;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(255, 106, 0, 0.35);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-brand-secondary-text;
+    background-color: transparent;
+    border: 1px solid #242424;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: #FF6A00;
+    color: #FF6A00;
+    background-color: rgba(255, 106, 0, 0.05);
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply badge;
+    background-color: rgba(255, 106, 0, 0.12);
+    color: #FF7A00;
+    border: 1px solid rgba(255, 106, 0, 0.25);
+  }
+
+  .badge-accent {
+    @apply badge;
+    background-color: rgba(36, 36, 36, 0.6);
+    color: #F5F5F5;
+    border: 1px solid #242424;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #FF6A00 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #050505 0%, #0A0A0A 100%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
