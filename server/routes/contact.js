@@ -3,14 +3,22 @@ import nodemailer from 'nodemailer'
 
 const router = express.Router()
 
+const EMAIL_USER = process.env.EMAIL_USER
+const EMAIL_PASS = process.env.EMAIL_PASS
+const TO_EMAIL = process.env.TO_EMAIL || EMAIL_USER
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
+
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
   },
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 15000,
 })
 
 const escapeHtml = (str) => {
@@ -52,6 +60,70 @@ const rateLimit = (windowMs = 60000, max = 5) => {
   }
 }
 
+const buildMailContent = (safeName, safeEmail, safeMessage) => ({
+  text: `Name: ${safeName}\nEmail: ${safeEmail}\n\nMessage:\n${safeMessage}`,
+  html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #333; border-bottom: 2px solid #ff6a00; padding-bottom: 10px;">New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> ${safeEmail}</p>
+            <p><strong>Message:</strong></p>
+            <p style="background: #f5f5f5; padding: 15px; border-radius: 5px; white-space: pre-wrap;">${safeMessage}</p>
+          </div>
+        `,
+})
+
+const sendViaSendGrid = async (name, email, message) => {
+  const { text, html } = buildMailContent(
+    escapeHtml(name),
+    escapeHtml(email),
+    escapeHtml(message),
+  )
+  const subject = `Portfolio Contact from ${escapeHtml(name)}`
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 10000)
+  try {
+    const res = await fetch('https://api.sendgrid.com/v3/mail/send', {
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        Authorization: `Bearer ${SENDGRID_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        personalizations: [{ to: [{ email: TO_EMAIL }] }],
+        from: { email: EMAIL_USER },
+        subject,
+        content: [
+          { type: 'text/plain', value: text },
+          { type: 'text/html', value: html },
+        ],
+      }),
+    })
+    if (!res.ok) {
+      const detail = await res.text().catch(() => '')
+      throw new Error(`SendGrid API ${res.status}: ${detail}`)
+    }
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+const sendViaSmtp = (name, email, message) => {
+  const { text, html } = buildMailContent(
+    escapeHtml(name),
+    escapeHtml(email),
+    escapeHtml(message),
+  )
+  return transporter.sendMail({
+    from: EMAIL_USER,
+    to: TO_EMAIL,
+    subject: `Portfolio Contact from ${escapeHtml(name)}`,
+    text,
+    html,
+  })
+}
+
 router.post(
   '/',
   rateLimit(60000, 5),
@@ -75,31 +147,21 @@ router.post(
         return res.status(400).json({ message: 'Input too long' })
       }
 
-      const safeName = escapeHtml(name)
-      const safeEmail = escapeHtml(email)
-      const safeMessage = escapeHtml(message)
-
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.TO_EMAIL || process.env.EMAIL_USER,
-        subject: `Portfolio Contact from ${safeName}`,
-        text: `Name: ${safeName}\nEmail: ${safeEmail}\n\nMessage:\n${safeMessage}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #333; border-bottom: 2px solid #ff6a00; padding-bottom: 10px;">New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${safeName}</p>
-            <p><strong>Email:</strong> ${safeEmail}</p>
-            <p><strong>Message:</strong></p>
-            <p style="background: #f5f5f5; padding: 15px; border-radius: 5px; white-space: pre-wrap;">${safeMessage}</p>
-          </div>
-        `,
+      if (SENDGRID_API_KEY) {
+        await sendViaSendGrid(name, email, message)
+      } else {
+        await sendViaSmtp(name, email, message)
       }
-
-      await transporter.sendMail(mailOptions)
 
       res.status(200).json({ message: 'Message sent successfully' })
     } catch (error) {
-      console.error('Contact form error:', error)
+      console.error('Contact form error:', {
+        message: error.message,
+        code: error.code,
+        command: error.command,
+        responseCode: error.responseCode,
+        response: error.response,
+      })
       res.status(500).json({
         message: 'Failed to send message. Please try again later.',
       })

@@ -18,7 +18,7 @@ export const personal = {
   phone: "+916369761312",
   location: "Chennai, India",
   profileImage: new URL('../assets/images/portfolio my image.png', import.meta.url).href,
-  resume: "/resume/Bharath_S_Resume.pdf",
+  resume: import.meta.env.BASE_URL + 'resume/Bharath_S_Resume.pdf',
   about: {
     heading: "Turning ideas into working software.",
     summary: "I'm a final-year Computer Science & Engineering student with hands-on experience in full-stack web development. I enjoy building practical applications that connect intuitive interfaces, reliable backend systems and meaningful data.\n\nThrough internships and academic projects, I've worked with the MERN stack, developed real-world billing and management systems, and explored AI and GIS applications in agriculture and environmental monitoring.\n\nI'm currently looking for opportunities where I can contribute as a software developer while continuing to grow my technical and problem-solving skills.",
