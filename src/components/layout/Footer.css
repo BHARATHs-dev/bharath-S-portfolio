@@ -2,8 +2,8 @@
 .footer-outer {
   position: relative;
   max-width: 1400px;
-  width: calc(100% - 48px);
-  margin: 60px auto 40px;
+  width: calc(100% - 32px);
+  margin: 40px auto 32px;
   border-radius: 24px;
   background-color: #0a0a0a;
   border: 2px solid rgba(255, 106, 0, 0.12);
@@ -102,18 +102,29 @@
   z-index: 2;
   background-color: #0a0a0a;
   border-radius: 23px;
-  padding: 56px 64px;
+  padding: 40px 32px;
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 640px) {
+@media (min-width: 640px) {
   .footer-outer {
     width: calc(100% - 48px);
-    margin: 40px auto 24px;
+    margin: 50px auto 36px;
   }
 
   .footer-inner {
-    padding: 28px 22px;
+    padding: 48px 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-outer {
+    width: calc(100% - 48px);
+    margin: 60px auto 40px;
+  }
+
+  .footer-inner {
+    padding: 56px 64px;
   }
 }
 

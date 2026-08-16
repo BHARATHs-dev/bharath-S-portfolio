@@ -24,7 +24,7 @@ const ProjectModal = ({ project, onClose }) => {
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-5 md:p-6">
           <img
             src={project.image}
             alt={project.title}

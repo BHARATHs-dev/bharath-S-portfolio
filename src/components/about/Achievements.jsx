@@ -12,7 +12,7 @@ const iconMap = {
 
 const Achievements = () => {
   return (
-     <div className="py-16">
+     <div className="py-12 md:py-16">
        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ const Achievements = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl border border-brand-border bg-brand-card hover:border-brand-orange transition-all duration-300"
+                className="p-5 md:p-6 rounded-2xl border border-brand-border bg-brand-card hover:border-brand-orange transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center flex-shrink-0 text-brand-orange">

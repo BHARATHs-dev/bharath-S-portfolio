@@ -103,8 +103,8 @@ const Contact = () => {
     }
   }
 
-  return (
-     <div className="py-16 bg-brand-bg">
+   return (
+      <div className="py-12 md:py-16 bg-brand-bg">
        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -124,14 +124,14 @@ const Contact = () => {
 
         <div className="max-w-5xl mx-auto">
            <div className="grid md:grid-cols-2 gap-6">
-             <motion.div
-               initial={{ opacity: 0, x: -20 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               transition={{ duration: 0.5 }}
-               className="space-y-4"
-            >
-              <div className="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-orange transition-all duration-300">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="space-y-4"
+             >
+               <div className="bg-brand-card border border-brand-border rounded-2xl p-5 md:p-6 hover:border-brand-orange transition-all duration-300">
                 <h3 className="text-xl font-bold text-brand-text mb-4">
                   Contact Information
                 </h3>
@@ -169,7 +169,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-orange transition-all duration-300">
+              <div className="bg-brand-card border border-brand-border rounded-2xl p-5 md:p-6 hover:border-brand-orange transition-all duration-300">
                 <h3 className="text-xl font-bold text-brand-text mb-4">
                   Social Links
                 </h3>
@@ -204,7 +204,7 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <form onSubmit={handleSubmit} className="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4">
+              <form onSubmit={handleSubmit} className="bg-brand-card border border-brand-border rounded-2xl p-5 md:p-6 space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-brand-orange mb-1">
                     Name

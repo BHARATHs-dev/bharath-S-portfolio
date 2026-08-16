@@ -112,7 +112,7 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <div className="flex items-center gap-4 pt-2">
+            <div className="flex items-center gap-4 pt-2 flex-wrap">
               {personal.github && (
                 <a href={personal.github} target="_blank" rel="noopener noreferrer" className="p-2 text-brand-secondary-text hover:text-brand-orange transition-colors">
                   <GitHubIcon />

@@ -11,7 +11,7 @@ const AboutCard = ({ title, children, icon: Icon, color = "magenta" }) => {
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="bg-brand-navy rounded-2xl p-6 shadow-lg border border-brand-border"
+      className="bg-brand-navy rounded-2xl p-5 md:p-6 shadow-lg border border-brand-border"
     >
       {Icon && (
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${colorClasses[color] || colorClasses.magenta}`}>

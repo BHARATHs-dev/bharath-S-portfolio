@@ -4,7 +4,7 @@ import { education } from '../../data/education'
 
 const Education = () => {
   return (
-     <div className="py-16">
+     <div className="py-12 md:py-16">
        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,14 +24,14 @@ const Education = () => {
 
         <div className="max-w-4xl mx-auto space-y-8">
           {education.map((edu, index) => (
-            <motion.div
-              key={edu.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-brand-card border border-brand-border rounded-2xl p-8 hover:border-brand-orange transition-all duration-300"
-            >
+              <motion.div
+                key={edu.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="bg-brand-card border border-brand-border rounded-2xl p-6 md:p-8 hover:border-brand-orange transition-all duration-300"
+              >
               {edu.type === 'undergraduate' ? (
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center flex-shrink-0">

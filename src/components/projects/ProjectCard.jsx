@@ -33,7 +33,7 @@ const ProjectCard = ({ project, index, onClick }) => {
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="p-5 md:p-6">
         <h3 className="text-xl font-bold text-brand-text mb-2 group-hover:text-brand-orange transition-colors">
           {project.title}
         </h3>

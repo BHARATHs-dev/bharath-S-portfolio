@@ -38,9 +38,9 @@ const About = () => {
     }
   ]
 
-  return (
-     <div className="py-16 bg-brand-bg">
-       <div className="mx-auto w-full px-4">
+   return (
+      <div className="py-12 md:py-16 bg-brand-bg">
+        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,13 +97,13 @@ const About = () => {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-             className="mt-12 bg-brand-card border border-brand-border rounded-2xl p-8 md:p-10"
-          >
+           <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+               className="mt-8 md:mt-12 bg-brand-card border border-brand-border rounded-2xl p-6 md:p-10"
+            >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center text-brand-orange flex-shrink-0">
                 <Target size={24} />

@@ -8,7 +8,7 @@ const ProjectSection = () => {
   const [selectedProject, setSelectedProject] = useState(null)
 
   return (
-     <div className="py-16">
+     <div className="py-12 md:py-16">
        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

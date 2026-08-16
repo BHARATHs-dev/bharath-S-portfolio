@@ -7,7 +7,7 @@ const ExperienceCard = ({ experience: exp, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`bg-brand-navy rounded-xl p-6 shadow-md border ${
+      className={`bg-brand-navy rounded-xl p-5 md:p-6 shadow-md border ${
         exp.featured ? 'border-brand-magenta/30 ring-2 ring-brand-magenta/10' : 'border-brand-border'
       } hover:shadow-xl transition-shadow`}
     >

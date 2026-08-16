@@ -7,7 +7,7 @@ const EducationCard = ({ education: edu, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-brand-navy rounded-xl p-6 shadow-md border border-brand-border hover:shadow-xl hover:border-brand-magenta/20 transition-shadow"
+      className="bg-brand-navy rounded-xl p-5 md:p-6 shadow-md border border-brand-border hover:shadow-xl hover:border-brand-magenta/20 transition-shadow"
     >
       <div className="flex items-start gap-4">
         <div className="text-3xl">{edu.icon}</div>

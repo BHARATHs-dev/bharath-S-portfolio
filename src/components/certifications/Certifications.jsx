@@ -10,7 +10,7 @@ const Certifications = () => {
   }
 
   return (
-     <div className="py-16">
+     <div className="py-12 md:py-16">
        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const Certifications = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-orange transition-all duration-300"
+                className="bg-brand-card border border-brand-border rounded-2xl p-5 md:p-6 hover:border-brand-orange transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-4">
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-brand-orange/10 text-brand-orange border border-brand-orange/20">
@@ -69,38 +69,38 @@ const Certifications = () => {
                   </div>
                 )}
 
-                {cert.file && (
-                  <div className="pt-4 border-t border-brand-border">
-                    <a
-                      href={cert.file}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => { e.preventDefault(); setSelectedPdf(cert.file) }}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange text-brand-bg rounded-lg hover:bg-brand-bright-orange transition-colors text-sm font-medium"
-                    >
-                      <FileDown size={16} />
-                      View Certificate
-                    </a>
-                  </div>
-                )}
+                 {cert.file && (
+                   <div className="pt-4 border-t border-brand-border">
+                     <a
+                       href={cert.file}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       onClick={(e) => { e.preventDefault(); setSelectedPdf(cert.file) }}
+                       className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 bg-brand-orange text-brand-bg rounded-lg hover:bg-brand-bright-orange transition-colors text-sm font-medium"
+                     >
+                       <FileDown size={16} />
+                       View Certificate
+                     </a>
+                   </div>
+                 )}
 
-                {cert.files && (
-                  <div className="pt-4 border-t border-brand-border flex flex-wrap gap-2">
-                    {cert.files.map((file, idx) => (
-                      <a
-                        key={idx}
-                        href={file}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => { e.preventDefault(); setSelectedPdf(file) }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange text-brand-bg rounded-lg hover:bg-brand-bright-orange transition-colors text-sm font-medium"
-                      >
-                        <FileDown size={16} />
-                        View Certificate
-                      </a>
-                    ))}
-                  </div>
-                )}
+                 {cert.files && (
+                   <div className="pt-4 border-t border-brand-border flex flex-wrap gap-2">
+                     {cert.files.map((file, idx) => (
+                       <a
+                         key={idx}
+                         href={file}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         onClick={(e) => { e.preventDefault(); setSelectedPdf(file) }}
+                         className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 bg-brand-orange text-brand-bg rounded-lg hover:bg-brand-bright-orange transition-colors text-sm font-medium"
+                       >
+                         <FileDown size={16} />
+                         View Certificate
+                       </a>
+                     ))}
+                   </div>
+                 )}
               </motion.div>
             )
           })}

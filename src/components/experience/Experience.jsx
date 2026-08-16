@@ -14,9 +14,9 @@ const Experience = () => {
     return "Dates to be confirmed"
   }
 
-  return (
-     <div className="py-16 bg-brand-bg">
-       <div className="mx-auto w-full px-4">
+   return (
+      <div className="py-12 md:py-16 bg-brand-bg">
+        <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ const Experience = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-brand-border"></div>
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-brand-border"></div>
 
             <div className="space-y-8">
               {experience.map((item, index) => (
@@ -45,13 +45,13 @@ const Experience = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="relative pl-20"
+                  className="relative pl-6 md:pl-8"
                 >
-                  <div className="absolute left-5 w-6 h-6 bg-brand-bg border-2 border-brand-orange rounded-full flex items-center justify-center">
-                    <span className="text-lg">{item.icon}</span>
+                  <div className="absolute left-0 md:left-5 top-1.5 w-3 h-3 md:w-6 md:h-6 bg-brand-bg border-2 border-brand-orange rounded-full flex items-center justify-center">
+                    <span className="text-sm md:text-lg">{item.icon}</span>
                   </div>
 
-                  <div className={`bg-brand-card rounded-2xl p-6 shadow-sm border ${
+                  <div className={`bg-brand-card rounded-2xl p-5 md:p-6 shadow-sm border ${
                     item.featured ? 'border-brand-orange/30 ring-2 ring-brand-orange/10' : 'border-brand-border'
                   }`}>
                     {item.type === 'internship' ? (

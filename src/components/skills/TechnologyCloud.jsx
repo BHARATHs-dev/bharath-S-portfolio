@@ -24,13 +24,13 @@ const TechnologyCloud = ({ categories }) => {
   )
 
   return (
-    <div className="relative py-10 overflow-hidden space-y-4">
-      <div className="flex animate-marquee hover:[animation-play-state:paused]">
+    <div className="relative py-10 overflow-hidden space-y-4 min-w-0">
+      <div className="flex animate-marquee hover:[animation-play-state:paused] min-w-0">
         {rowOne.map((skill, index) => (
           <SkillPill key={`r1-${index}`} skill={skill} index={index} />
         ))}
       </div>
-      <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
+      <div className="flex animate-marquee-reverse hover:[animation-play-state:paused] min-w-0">
         {rowTwo.map((skill, index) => (
           <SkillPill key={`r2-${index}`} skill={skill} index={index} />
         ))}

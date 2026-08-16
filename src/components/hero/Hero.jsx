@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(255,106,0,0.12),transparent_35%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_80%,rgba(255,106,0,0.06),transparent_30%)]"></div>
 
-      <div className="mx-auto w-full py-16 relative z-10 px-4 pt-20">
+      <div className="mx-auto w-full py-12 md:py-16 relative z-10 px-4 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-nowrap gap-4"
+              className="flex flex-wrap gap-4"
             >
               <a
                 href="#projects"

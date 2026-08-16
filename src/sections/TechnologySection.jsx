@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const TechnologySection = () => {
   return (
-    <section id="skills" className="scroll-mt-20 bg-brand-bg py-16">
+    <section id="skills" className="scroll-mt-20 bg-brand-bg py-12 md:py-16">
       <div className="mx-auto w-full px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
