@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Award, BookOpen, CheckCircle2, FileDown } from 'lucide-react'
+import { Award, BookOpen, CheckCircle2, FileDown, X } from 'lucide-react'
 import { certifications } from '../../data/certifications'
 
 const Certifications = () => {
+  const [selectedPdf, setSelectedPdf] = useState(null)
   const getTypeIcon = (type) => {
     return type === 'training' ? BookOpen : Award
   }
@@ -73,6 +75,7 @@ const Certifications = () => {
                       href={cert.file}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => { e.preventDefault(); setSelectedPdf(cert.file) }}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange text-brand-bg rounded-lg hover:bg-brand-bright-orange transition-colors text-sm font-medium"
                     >
                       <FileDown size={16} />
@@ -89,6 +92,7 @@ const Certifications = () => {
                         href={file}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => { e.preventDefault(); setSelectedPdf(file) }}
                         className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange text-brand-bg rounded-lg hover:bg-brand-bright-orange transition-colors text-sm font-medium"
                       >
                         <FileDown size={16} />
@@ -101,6 +105,32 @@ const Certifications = () => {
             )
           })}
         </div>
+
+        {selectedPdf && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-2 sm:p-4"
+            onClick={() => setSelectedPdf(null)}
+          >
+            <div
+              className="relative w-full max-w-5xl h-[85vh] max-h-[85vh] bg-brand-card border border-brand-border rounded-xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setSelectedPdf(null)}
+                className="absolute top-3 right-3 z-10 p-2 text-brand-text hover:text-brand-orange rounded-lg bg-brand-bg/50"
+                aria-label="Close certificate"
+              >
+                <X size={20} />
+              </button>
+              <iframe
+                src={selectedPdf}
+                title="Certificate"
+                className="w-full h-full border-0"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
